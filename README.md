@@ -1,7 +1,8 @@
 # 🖥️ IT Helpdesk System
 
 ระบบจัดการ IT Helpdesk สำหรับแจ้งปัญหาและติดตามการแก้ไข (Ticket Management System)  
-พัฒนาโดยทีม IT ของ **3BMT Co., Ltd.**
+โปรเจกต์ผลงานส่วนตัว (Portfolio) — Full-stack web application ที่ผมพัฒนาจากระบบ Helpdesk ภายในองค์กรจริง
+ข้อมูลภายในองค์กรทั้งหมด (ฐานข้อมูล, รายชื่อพนักงาน, ข้อมูลทรัพย์สิน, รหัสผ่าน) ถูกนำออกแล้ว
 
 ---
 
@@ -15,6 +16,7 @@
 - [Environment Variables](#environment-variables)
 - [ระบบ Authentication (Active Directory)](#ระบบ-authentication-active-directory)
 - [Report API (Power BI)](#report-api-power-bi)
+- [หมายเหตุ](#-หมายเหตุเพิ่มเติม)
 
 ---
 
@@ -29,7 +31,7 @@
 | 📁 **File Upload** | แนบไฟล์/รูปภาพประกอบ Ticket |
 | 📧 **Email Notification** | แจ้งเตือนผ่าน Email อัตโนมัติ |
 | 📊 **Report API** | API สำหรับ Power BI ดึงข้อมูล Dashboard |
-| 💻 **Asset Monitoring** | ติดตามทรัพย์สินคอมพิวเตอร์ในองค์กร |
+| 💻 **Asset Monitoring** | ติดตามทรัพย์สินคอมพิวเตอร์ (รูปและข้อมูลตัวอย่างถูกนำออก) |
 
 ---
 
@@ -73,7 +75,6 @@ it-helpdesk-project/
 │   ├── .env.example              # ตัวอย่าง config ← ดูไฟล์นี้ก่อน!
 │   └── package.json
 │
-├── DB/                           # (ไม่รวมในสำเนานี้)
 ├── project_overview_part1.md     # 📖 รายละเอียดระบบ Part 1
 ├── project_overview_part2.md     # 📖 รายละเอียดระบบ Part 2
 └── README.md                     # ไฟล์นี้
@@ -98,7 +99,7 @@ it-helpdesk-project/
 ### 1. Clone โปรเจกต์
 
 ```bash
-git clone https://github.com/3bmt-th/it-helpdesk-project.git
+git clone https://github.com/mroatder/it-helpdesk-project.git
 cd it-helpdesk-project
 ```
 
@@ -197,49 +198,12 @@ npm run dev
 
 ---
 
-## 🤝 การทำงานร่วมกัน (Git Workflow สำหรับทีม)
-
-เนื่องจากโปรเจกต์นี้มีผู้พัฒนามากกว่า 1 คน เพื่อป้องกันปัญหา "โค้ดทับกัน" (Merge Conflict) หรือโค้ดหาย แนะนำให้ทำตามขั้นตอนดังนี้ครับ:
-
-### กฎเหล็ก: "ดึง (Pull) ก่อน ดัน (Push) เสมอ"
-
-**1. อัปเดตโค้ดล่าสุดก่อนเริ่มงานเสมอ**
-เปิด Terminal แล้วพิมพ์คำสั่งนี้ **ก่อนเริ่มเขียนโค้ดทุกครั้ง** เพื่อดึงโค้ดล่าสุดที่คนอื่นอาจจะอัปเดตไว้ลงมาที่เครื่องเรา:
-```bash
-git pull origin main
-```
-
-**2. เซฟงานของเราเข้าเครื่อง (Commit)**
-เมื่อเขียนโค้ดฟีเจอร์นั้นๆ เสร็จแล้ว:
-```bash
-git add .
-git commit -m "อธิบายว่าแก้อะไรไป เช่น feat: เพิ่มระบบ Auto Close"
-```
-
-**3. ดึงโค้ดเช็คอีกรอบก่อนส่งขึ้น Server**
-**ห้าม** `git push` ทันที! ให้ดึงโค้ดลงมาเช็คอีกรอบ เผื่อเพื่อนเพิ่ง Push งานสวนทางไปตอนที่เรากำลังเขียนโค้ด:
-```bash
-git pull origin main
-```
-*   **กรณี A (ราบรื่น):** ระบบจะรวมโค้ดให้แบบอัตโนมัติ (อาจจะมีหน้าจอให้กด Save commit message ให้กดบันทึกและปิดได้เลย)
-*   **กรณี B (โค้ดชนกัน - Conflict):** ระบบจะแจ้งเตือน ให้เปิดไฟล์ที่มีปัญหาใน VS Code คุณจะเห็นโค้ดของคุณกับของเพื่อน ให้เลือกว่าจะเก็บอันไหนไว้ (Accept Current, Accept Incoming หรือ Accept Both) เมื่อแก้เสร็จให้พิมพ์ `git add .` และ `git commit -m "resolve conflict"` อีกครั้ง
-
-**4. ส่งโค้ดขึ้น GitHub (Push)**
-เมื่ออัปเดตและเช็คความเรียบร้อยหมดแล้ว:
-```bash
-git push origin main
-```
-
-*(💡 ทริคโปรเพลเยอร์: หากทำระบบใหญ่ๆ ที่ใช้เวลาหลายวัน แนะนำให้แตก Branch ออกไปทำก่อน `git checkout -b <ชื่อสาขา>` แล้วค่อยมารวมกันทีหลัง จะปลอดภัยที่สุดครับ)*
-
----
-
 ## 📝 หมายเหตุเพิ่มเติม
 
-- **Database Schema:** ไม่รวมในสำเนานี้
+- **Database Schema:** ไม่รวมในรีโพนี้ (เป็นข้อมูลภายในองค์กร) ต้องสร้างตารางเองตามโค้ดใน `backend_web/routes/`
 - **Project Overview:** อ่านรายละเอียดระบบได้ที่ `project_overview_part1.md` และ `project_overview_part2.md`
 - **Upload Files:** ไฟล์ที่ผู้ใช้แนบมากับ Ticket จะถูกเก็บใน `backend_web/uploads/` — **โฟลเดอร์นี้ไม่ได้ถูก track โดย Git**
 
 ---
 
-*พัฒนาโดย IT Department — 3BMT Co., Ltd. © 2026*
+*พัฒนาโดย mroatder © 2026*
