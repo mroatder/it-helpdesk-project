@@ -1,0 +1,90 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main # ทริกเกอร์อัตโนมัติเมื่อมีการ Push โค้ดเข้า branch main
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+
+# กำหนดพาธเซิร์ฟเวอร์ตรงนี้ (ต้องใช้ \\ สำหรับ Windows Path)
+env:
+  FRONTEND_DEPLOY_PATH: 'C:\it-helpdesk-project\frontend_web'
+  BACKEND_DEPLOY_PATH: 'C:\it-helpdesk-project\backend_web'
+
+jobs:
+  # ==========================================
+  # เฟสที่ 1: CI (Build & Test บน GitHub Cloud)
+  # ==========================================
+  build-and-test:
+    name: Build & Test on GitHub Cloud
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js for Frontend
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+          cache-dependency-path: frontend_web/package-lock.json
+
+      - name: Install Frontend Dependencies
+        run: |
+          cd frontend_web
+          npm ci
+
+      - name: Build Frontend (Test)
+        run: |
+          cd frontend_web
+          npm run build
+
+  # ==========================================
+  # เฟสที่ 2: CD (Deploy ขึ้น Windows Server)
+  # ==========================================
+  deploy:
+    name: Deploy to Corporate Server
+    needs: build-and-test
+    runs-on: self-hosted # วิ่งไปรันที่ Windows Server ของบริษัท
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # 1. Deploy Frontend (สร้าง .env.production และ Build)
+      - name: Build & Deploy Frontend
+        shell: powershell
+        run: |
+          cd frontend_web
+          npm ci
+
+          # [Best Practice] ใช้ Set-Content แทน echo > เพื่อป้องกันบั๊ก UTF-16 ของ PowerShell
+          Set-Content -Path .env.production -Value "VITE_API_URL=http://itsupport.local/api" -Encoding utf8
+          npm run build
+
+          # ลบไฟล์เก่าออกทั้งหมดในตำแหน่งพาร์ทปลายทาง
+          Remove-Item -Path "${{ env.FRONTEND_DEPLOY_PATH }}\*" -Recurse -Force -ErrorAction SilentlyContinue
+
+          # คัดลอกไฟล์ที่บิลด์สำเร็จไปแทนที่ในโฟลเดอร์ IIS
+          Copy-Item -Path "dist\*" -Destination "${{ env.FRONTEND_DEPLOY_PATH }}\" -Recurse -Force
+
+      # 2. Deploy Backend (ก๊อปปี้ไฟล์ และ Restart PM2)
+      - name: Copy & Deploy Backend
+        shell: powershell
+        run: |
+          # [Best Practice] ใช้ robocopy /E /XD แทน Copy-Item เพื่อความเร็ว (ไม่ถึง 5 วินาที)
+          # ไม่ก๊อปปี้ node_modules, logs, uploads เพราะเป็น runtime data
+          robocopy "backend_web" "${{ env.BACKEND_DEPLOY_PATH }}" /E /XD "node_modules" "logs" "uploads"
+          if ($LASTEXITCODE -ge 8) { throw "Robocopy failed with exit code $LASTEXITCODE" }
+          $global:LASTEXITCODE = 0
+
+          cd "${{ env.BACKEND_DEPLOY_PATH }}"
+          npm install --production
+
+          # สั่ง Restart PM2 — ถ้ายังไม่เคย Start ให้ Start ใหม่จาก ecosystem.config.js
+          pm2 restart it-service-app --update-env
+          if ($LASTEXITCODE -ne 0) {
+              pm2 start ecosystem.config.js --env production
+          }

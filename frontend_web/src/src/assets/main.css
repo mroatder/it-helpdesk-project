@@ -1,0 +1,50 @@
+/* src/assets/main.css - FINAL COMPLETE CODE */
+
+/* 1. KANIT FONT DECLARATIONS (Offline TTF Files) */
+
+@font-face {
+  font-family: 'Kanit';
+  src: url('./fonts/Kanit-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Kanit';
+  src: url('./fonts/Kanit-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Kanit';
+  src: url('./fonts/Kanit-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Kanit';
+  src: url('./fonts/Kanit-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+/* --- 2. TAILWIND DIRECTIVES & FINAL GLOBAL RESET --- */
+
+@tailwind base;
+
+@layer base {
+  html, body {
+    /* 🔥 FIX: ลบ Margin/Padding ที่ทำให้เกิดเส้นขาว (Ghost Line) */
+    margin: 0 !important; 
+    padding: 0 !important;
+    
+    /* ตั้ง background ให้ Body เป็นสีเดียวกับ MainLayout เพื่อกันช่องว่าง */
+    background-color: #4e4e4e; 
+    
+    /* เพื่อให้มั่นใจว่า h-screen ทำงานได้สมบูรณ์ */
+    min-height: 100vh;
+  }
+}
+
+@tailwind components;
+@tailwind utilities;

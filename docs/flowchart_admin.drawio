@@ -1,0 +1,151 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="ADMIN Flowchart" id="admin-flow">
+    <mxGraphModel dx="602" dy="316" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1500" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;" value="เริ่มต้น" vertex="1">
+          <mxGeometry height="40" width="140" x="100" y="10" as="geometry" />
+        </mxCell>
+        <mxCell id="3" parent="1" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" value="" vertex="1">
+          <mxGeometry height="30" width="30" x="155" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="4" parent="1" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;" value="เลือกรายการ" vertex="1">
+          <mxGeometry height="50" width="180" x="80" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="5" parent="1" style="rhombus;whiteSpace=wrap;html=1;" value="จัดการปัญหา&#xa;(Helpdesk)" vertex="1">
+          <mxGeometry height="100" width="200" x="70" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="6" parent="1" style="shape=process;whiteSpace=wrap;html=1;" value="แสดงข้อมูลการแจ้งปัญหาทั้งหมด" vertex="1">
+          <mxGeometry height="50" width="230" x="370" y="265" as="geometry" />
+        </mxCell>
+        <mxCell id="6a" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="อัปเดตสถานะและปิดงาน" vertex="1">
+          <mxGeometry height="50" width="230" x="370" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="8" parent="1" style="rhombus;whiteSpace=wrap;html=1;" value="จัดการทรัพย์สิน&#xa;(Asset)" vertex="1">
+          <mxGeometry height="100" width="200" x="70" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="9" parent="1" style="shape=process;whiteSpace=wrap;html=1;" value="แสดงข้อมูลอุปกรณ์และแผนผัง" vertex="1">
+          <mxGeometry height="50" width="230" x="370" y="445" as="geometry" />
+        </mxCell>
+        <mxCell id="9a" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="เพิ่ม/แก้ไขข้อมูลทรัพย์สิน" vertex="1">
+          <mxGeometry height="50" width="230" x="370" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="10" parent="1" style="rhombus;whiteSpace=wrap;html=1;" value="จัดการข้อมูลระบบ&#xa;(Settings)" vertex="1">
+          <mxGeometry height="100" width="200" x="70" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="11" parent="1" style="shape=process;whiteSpace=wrap;html=1;" value="แสดงข้อมูลพื้นฐาน" vertex="1">
+          <mxGeometry height="50" width="230" x="370" y="625" as="geometry" />
+        </mxCell>
+        <mxCell id="11a" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="จัดการ Users / หมวดหมู่ / FAQ" vertex="1">
+          <mxGeometry height="50" width="230" x="370" y="720" as="geometry" />
+        </mxCell>
+        <mxCell id="14" parent="1" style="rhombus;whiteSpace=wrap;html=1;" value="ดูสถิติ&#xa;(Dashboard)" vertex="1">
+          <mxGeometry height="100" width="200" x="70" y="780" as="geometry" />
+        </mxCell>
+        <mxCell id="15" parent="1" style="shape=process;whiteSpace=wrap;html=1;" value="แสดงข้อมูลรายงาน (KPI)" vertex="1">
+          <mxGeometry height="50" width="230" x="370" y="805" as="geometry" />
+        </mxCell>
+        <mxCell id="12" parent="1" style="rhombus;whiteSpace=wrap;html=1;" value="ออกจากระบบ" vertex="1">
+          <mxGeometry height="90" width="180" x="80" y="940" as="geometry" />
+        </mxCell>
+        <mxCell id="13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;" value="จบการทำงาน" vertex="1">
+          <mxGeometry height="40" width="140" x="100" y="1090" as="geometry" />
+        </mxCell>
+        <mxCell id="20" edge="1" parent="1" source="2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" target="3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="21" edge="1" parent="1" source="3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" target="4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="22" edge="1" parent="1" source="4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" target="5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="23" edge="1" parent="1" source="5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="6" value="ใช่">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="23a" edge="1" parent="1" source="6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" target="6a">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="23b" edge="1" parent="1" source="6a" style="edgeStyle=orthogonalEdgeStyle;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="680" y="385" />
+              <mxPoint x="680" y="95" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="26" edge="1" parent="1" source="5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="8" value="ไม่ใช่">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="27" edge="1" parent="1" source="8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="9" value="ใช่">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="27a" edge="1" parent="1" source="9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" target="9a">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="27b" edge="1" parent="1" source="9a" style="edgeStyle=orthogonalEdgeStyle;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=1.001;exitY=0.19;exitDx=0;exitDy=0;exitPerimeter=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="600" y="580" />
+              <mxPoint x="680" y="580" />
+              <mxPoint x="680" y="110" />
+            </Array>
+            <mxPoint x="600" y="560" as="sourcePoint" />
+            <mxPoint x="185.00000000000284" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="29" edge="1" parent="1" source="8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="10" value="ไม่ใช่">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="30" edge="1" parent="1" source="10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="11" value="ใช่">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="30a" edge="1" parent="1" source="11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;" target="11a">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="485" y="710" />
+              <mxPoint x="485" y="710" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="30b" edge="1" parent="1" source="11a" style="edgeStyle=orthogonalEdgeStyle;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="680" y="745" />
+              <mxPoint x="680" y="95" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="32" edge="1" parent="1" source="10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="14" value="ไม่ใช่">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="40" edge="1" parent="1" source="14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="15" value="ใช่">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="41" edge="1" parent="1" source="15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="680" y="830" />
+              <mxPoint x="680" y="95" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="42" edge="1" parent="1" source="14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="12" value="ไม่ใช่">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="33" edge="1" parent="1" source="12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="3" value="ไม่ใช่">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="680" y="985" />
+              <mxPoint x="680" y="95" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="34" edge="1" parent="1" source="12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="13" value="ใช่">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

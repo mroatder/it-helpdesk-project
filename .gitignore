@@ -1,0 +1,76 @@
+# ============================================================
+# .gitignore — IT Helpdesk System
+# ============================================================
+
+# ─── Node Modules ────────────────────────────────────────────
+node_modules/
+**/node_modules/
+
+# ─── Environment / Secrets ───────────────────────────────────
+# !! อย่า commit ค่า password / secret จริงเด็ดขาด !!
+.env
+.env.local
+.env.*.local
+# .env.production
+# ถ้ามี password ใน .env.production ให้เพิ่มบรรทัดนี้:
+# .env.production
+
+# ─── Build Outputs ───────────────────────────────────────────
+dist/
+dist-ssr/
+.dist/
+build/
+coverage/
+
+# ─── Uploaded Files (runtime data, not source code) ──────────
+uploads/
+**/uploads/
+tmp/
+
+# ─── Logs ────────────────────────────────────────────────────
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ─── Debug / Temporary JSON & Text Files ─────────────────────
+all_resolved.json
+all_tickets_full.json
+resolved_tickets.json
+tickets_report.json
+log_1112.json
+output.txt
+*.tsbuildinfo
+.eslintcache
+
+# ─── Operating System ────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─── IDE / Editor ────────────────────────────────────────────
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# ─── Test Artifacts ──────────────────────────────────────────
+/cypress/videos/
+/cypress/screenshots/
+__screenshots__/
+
+# ─── Dev Test & Debug Scripts ────────────────────────────────
+backend_web/check_*.js
+backend_web/test_*.js
+backend_web/count_tickets.js
+backend_web/find_resolved.js
+backend_web/route_map.js
+backend_web/run_job_manual.js
+
+.env.production
